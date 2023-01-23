@@ -305,11 +305,12 @@ std::vector<typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::C
     }
     
     std::vector<std::vector<int>> clusterInd = euclideanCluster(points,tree,clusterTolerance); 
-
+    //trying to see if euclideanCluster is grouping clusteringInd
+    std::cout << "cluster ind size"<<clusterInd.size()<<std::endl; 
     for(std::vector<int> cluster : clusterInd)
     {
         typename pcl::PointCloud<PointT>::Ptr cloudCluster (new pcl::PointCloud<PointT>); 
-
+        
         for(int index : cluster)
             cloudCluster->points.push_back (cloud->points[index]); 
 
